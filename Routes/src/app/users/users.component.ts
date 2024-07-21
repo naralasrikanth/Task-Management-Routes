@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import { UserComponent } from './user/user.component';
 import { UsersService } from './users.service';
@@ -10,7 +10,12 @@ import { UsersService } from './users.service';
   styleUrl: './users.component.css',
   imports: [UserComponent],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   private usersService = inject(UsersService);
   users = this.usersService.users;
+   
+  ngOnInit(): void {
+    console.log(this.users);
+    
+  }
 }
