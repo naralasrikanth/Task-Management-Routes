@@ -8,7 +8,8 @@ import { inject } from "@angular/core";
 
 export const routes : Routes = [
     { path:'',redirectTo:'tasks',pathMatch:'full'},
-    {path: 'tasks',component:TaskComponent,runGuardsAndResolvers:'always',
+    {path: 'tasks',loadComponent : () => import('../tasks/task/task.component').then((mod) => mod.TaskComponent),
+        runGuardsAndResolvers:'always',
         resolve:{ userTasks : resolveUserTasks}
     },
     {path : 'tasks/new', component : NewTaskComponent,canDeactivate:[canLeaveEditPage]}

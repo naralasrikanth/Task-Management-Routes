@@ -17,14 +17,14 @@ export class TaskComponent {
   task = input.required<Task>();
   private tasksService = inject(TasksService);
   private router = inject(Router);
-  private activateRoute = inject(ActivatedRoute)
+  private activatedRoute = inject(ActivatedRoute);
 
   onComplete() {
     this.tasksService.removeTask(this.task().id);
     this.router.navigate(['./'], {
-      relativeTo:this.activateRoute,
-      onSameUrlNavigation : 'reload',
-      queryParamsHandling : 'preserve'
+      relativeTo: this.activatedRoute,
+      onSameUrlNavigation: 'reload',
+      queryParamsHandling: 'preserve',
     });
   }
 }
